@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ franchise.name }} - Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header .short-name {
+            color: #666;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .logo-section img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-placeholder {
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .details {
+            margin-top: 25px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .trophy-highlight {
+            color: #ff6b35;
+            font-size: 16px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .detail-item {
+                flex-direction: column;
+            }
+
+            .detail-value {
+                text-align: left;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ franchise.name }} <span class="short-name">({{ franchise.short_name }})</span></h1>
+        </div>
+
+        <div class="logo-section">
+            {% if franchise.logo %}
+                <img src="{{ franchise.logo.url }}" alt="{{ franchise.name }} Logo" />
+            {% else %}
+                <div class="logo-placeholder">No Logo Available</div>
+            {% endif %}
+        </div>
+
+        <div class="details">
+            <div class="detail-item">
+                <span class="detail-label">Founded Year</span>
+                <span class="detail-value">{{ franchise.founded_year }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Number of Trophies</span>
+                <span class="detail-value trophy-highlight">{{ franchise.no_of_trophies }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">City</span>
+                <span class="detail-value">{{ franchise.city }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Owner</span>
+                <span class="detail-value">{{ franchise.owner }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Coach</span>
+                <span class="detail-value">{{ franchise.coach }}</span>
+            </div>
+        </div>
+
+        <a href="{% url 'franchise_list' %}" class="back-link">← Back to Franchise List</a>
+    </div>
+</body>
+
+</html>
