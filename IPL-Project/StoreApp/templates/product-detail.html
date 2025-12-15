@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List</title>
+    <style>
+        /* General Reset and Body Styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* Container for centering content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Section Styles */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
+        }
+
+        .page-header h2 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+
+        /* Add Product Button */
+        .btn-add {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-add:hover {
+            background-color: #2980b9;
+        }
+
+        /* Product Grid Layout */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Product Card Styles */
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image Container */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f1f3f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .no-image {
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Card Content */
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            /* Pushes price to bottom */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* Limit text to 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Price and Discount Section */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f1f3f5;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .discount {
+            font-size: 0.85rem;
+            color: #e74c3c;
+            background-color: #fadbd8;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h2>Product Details</h2>
+        </div>
+
+        <!-- Grid of Products -->
+        <div class="product-grid">
+
+            <div class="product-card">
+                <!-- Image Section -->
+                <div class="card-image">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <span class="no-image">No Image Available</span>
+                    {% endif %}
+                </div>
+
+                <!-- Details Section -->
+                <div class="card-body">
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <p class="product-description">{{ product.description }}</p>
+
+                    <div class="card-footer">
+                        <span class="price">{{ product.price }}</span>
+                        {% if product.discount %}
+                        <span class="discount">{{ product.discount }} OFF</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
