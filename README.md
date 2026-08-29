@@ -3,8 +3,8 @@ My Back-end work
 
 Backend development 
 
-          It refers to the server-side of a web application, focusing on the logic, databases, and infrastructure that power the user-facing elements. 
-          It ensures the site functions properly by managing data, security, and performance behind the scenes, effectively acting as the "brain" of the application. 
+-> It refers to the server-side of a web application, focusing on the logic, databases, and infrastructure that power the user-facing elements. 
+ -> It ensures the site functions properly by managing data, security, and performance behind the scenes, effectively acting as the "brain" of the application. 
 
 Core Concepts and Components
 
