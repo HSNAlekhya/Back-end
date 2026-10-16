@@ -1,8 +1,8 @@
 # Back-end Development
 
-A collection of back-end development projects created to practice and demonstrate server-side programming, application logic, databases, APIs, authentication, and web application development.
+-> A collection of back-end development projects created to practice and demonstrate server-side programming, application logic, databases, APIs, authentication, and web application development.
 
-This repository represents my learning journey in back-end development, starting with fundamental server-side concepts and progressing toward building functional and database-driven applications.
+-> This repository represents my learning journey in back-end development, starting with fundamental server-side concepts and progressing toward building functional and database-driven applications.
 
 ---
 
